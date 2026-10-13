@@ -1,0 +1,265 @@
+/* Wklejasz to na samą górę pliku style.css */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu');
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #047973;
+    --accent-color: #84c9c5;
+    --card-bg: #f8f9fa;
+    --border-color: #e9ecef;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: #84c9c5;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.total-amount {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Pasek postępu */
+.progress-wrapper {
+    margin-bottom: 5px;
+}
+.progress-bar-container {
+    width: 100%;
+    height: 24px;
+    background-color: #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: #047973;
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.progress-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Siatka kafelków prania */
+.cards-container {
+    width: 100%;
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 100px;
+}
+
+.laundry-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.card-date {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Przycisk plusa w rogu */
+.fab-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 32px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s;
+    z-index: 99;
+}
+.fab-btn:hover {
+    background-color: #047973;
+    transform: scale(1.05);
+}
+.fab-btn:active {
+    transform: scale(0.95);
+}
+
+/* Okienko wyboru (Modal) */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-card {
+    background-color: #f1f3f5;
+    border: 2px solid transparent;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.option-card:hover {
+    background-color: #e9ecef;
+    border-color: var(--primary-color);
+}
+/* Przycisk plusa w rogu */
+.settings-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--acent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s;
+    z-index: 99;
+}
+.settings-btn:hover {
+    background-color: var(--acent-color);
+    transform: scale(1.05);
+}
+.settings-btn:active {
+    transform: scale(0.95);
+}
+/* Pole własnej kwoty */
+.custom-input-section {
+    display: none;
+    margin-top: 15px;
+    animation: fadeIn 0.3s ease forwards;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.custom-input-section input {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+.custom-input-section input:focus {
+    border-color: var(--accent-color);
+}
+.custom-input-section button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+
+/* Styl dla inputa wewnątrz modalu ustawień */
+.modal-content input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.modal-content input[type="number"]:focus {
+    border-color: var(--primary-color);
+}

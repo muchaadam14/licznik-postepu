@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licznik Składania Prania</title>
+    <!-- Łączymy plik ze stylami CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <div class="total-amount" id="totalAmountDisplay">0.00 zł</div>
+        
+        <!-- Pasek postępu -->
+        <div class="progress-wrapper">
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <div class="progress-text" id="progressTextDisplay">Cel: 0 zł / 1000 zł</div>
+        </div>
+    </div>
+
+    <!-- Kontener na kafelki z praniami -->
+    <div class="cards-container" id="cardsContainer"></div>
+
+    <!-- Okrągły przycisk z plusem w rogu -->
+    <button class="fab-btn" onclick="openModal()">+</button>
+
+    <!-- Okrągły przycisk zębatki w prawym górnym rogu -->
+    <button class="settings-btn" onclick="openSettingsModal()"><span class="material-symbols-rounded">
+menu
+</span></button>
+
+    <!-- Okienko Ustawień (Drugi Modal) -->
+    <div class="modal-overlay" id="settingsModalOverlay" onclick="closeSettingsModalOutside(event)">
+        <div class="modal-content">
+            <h3 class="modal-title">Ustawienia aplikacji</h3>
+            <div class="modal-options">
+                <button onclick="clearAllHistory()" style="background-color: #dc3545; color: white; border: none; border-radius: 10px; padding: 15px; font-weight: bold; cursor: pointer; transition: background-color 0.2s;">Wyczyść całą historię</button>
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 10px 0; width: 100%;">
+                <button onclick="closeSettingsModal()" style="background-color: #6c757d; color: white; border: none; border-radius: 10px; padding: 10px; font-weight: bold; cursor: pointer; margin-top: 5px;">Zamknij</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Okienko wyboru (Modal Popup) -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <h3 class="modal-title">Dodaj</h3>
+            <div class="modal-options" id="modalOptionsMain">
+                <div class="option-card" onclick="addStandardLaundry()">Dodaj kwotę standardową (3 zł)</div>
+                <div class="option-card" onclick="showCustomInput()">Dodaj kwotę niestandardową</div>
+            </div>
+            
+            <!-- Schowana sekcja własnej kwoty -->
+            <div class="custom-input-section" id="customInputSection">
+                <input type="number" id="customPriceInput" placeholder="Wpisz kwotę w zł" min="0.01" step="0.01">
+                <button onclick="addCustomLaundry()">Dodaj</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Łączymy plik ze skryptami JavaScript na samym dole -->
+    <script src="script.js"></script>
+</body>
+</html>
