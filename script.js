@@ -1,5 +1,6 @@
 // Ładowanie historii oraz domyślnej ceny z pamięci LocalStorage
 let laundryList = JSON.parse(localStorage.getItem('laundryHistory')) || [];
+const defaultLaundryPrice = 3;
 
 // Pierwsze uruchomienie aplikacji
 updateUI();
